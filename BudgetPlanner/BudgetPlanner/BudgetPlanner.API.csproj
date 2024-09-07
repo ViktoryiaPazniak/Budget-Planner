@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BudgetPlanner.BAL\BudgetPlanner.BAL.csproj" />
+    <ProjectReference Include="..\BudgetPlanner.BAL\BudgetPlanner.BLL.csproj" />
     <ProjectReference Include="..\BudgetPlanner.DAL\BudgetPlanner.DAL.csproj" />
   </ItemGroup>
 
