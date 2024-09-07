@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BudgetPlanner.DAL.Repositories
 {
-    public class CurrencyRepository : IRepository<Currency>
+    public class CurrencyRepository : IRepository<CurrencyEntity>
     {
         private ApplicationDbContext _context;
 
@@ -14,13 +14,13 @@ namespace BudgetPlanner.DAL.Repositories
             _context = context;
         }
 
-        public async Task Create(Currency currency)
+        public async Task Create(CurrencyEntity currency)
         {
             _context.Currencies.Add(currency);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(Currency currency)
+        public async Task Update(CurrencyEntity currency)
         {
             var dbCurrency = await _context.Currencies.FindAsync(currency.CurrencyId);
 
@@ -48,12 +48,12 @@ namespace BudgetPlanner.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Currency>> GetAll()
+        public async Task<IEnumerable<CurrencyEntity>> GetAll()
         {
             return await _context.Currencies.ToListAsync();
         }
 
-        public async Task<Currency> GetById(int id)
+        public async Task<CurrencyEntity> GetById(int id)
         {
             var currency = await _context.Currencies.FindAsync(id);
 

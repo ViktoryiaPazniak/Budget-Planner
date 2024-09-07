@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BudgetPlanner.DAL.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IRepository<UserEntity>
     {
         private ApplicationDbContext _context;
 
@@ -14,13 +14,13 @@ namespace BudgetPlanner.DAL.Repositories
             _context = context;
         }
 
-        public async Task Create(User user)
+        public async Task Create(UserEntity user)
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(User user)
+        public async Task Update(UserEntity user)
         {
             var dbUser = await _context.Users.FindAsync(user.UserId);
 
@@ -49,12 +49,12 @@ namespace BudgetPlanner.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<UserEntity>> GetAll()
         {
             return await _context.Users.ToListAsync();
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<UserEntity> GetById(int id)
         {
             var user = await _context.Users.FindAsync(id);
 

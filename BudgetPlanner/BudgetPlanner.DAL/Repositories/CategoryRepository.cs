@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BudgetPlanner.DAL.Repositories
 {
-    public class CategoryRepository : IRepository<Category>
+    public class CategoryRepository : IRepository<CategoryEntity>
     {
         private ApplicationDbContext _context;
 
@@ -14,13 +14,13 @@ namespace BudgetPlanner.DAL.Repositories
             _context = context;
         }
 
-        public async Task Create(Category category)
+        public async Task Create(CategoryEntity category)
         {
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(Category category)
+        public async Task Update(CategoryEntity category)
         {
             var dbCategory = await _context.Categories.FindAsync(category.CategoryId);
 
@@ -48,12 +48,12 @@ namespace BudgetPlanner.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Category>> GetAll()
+        public async Task<IEnumerable<CategoryEntity>> GetAll()
         {
             return await _context.Categories.ToListAsync();
         }
 
-        public async Task<Category> GetById(int id)
+        public async Task<CategoryEntity> GetById(int id)
         {
             var category = await _context.Categories.FindAsync(id);
 

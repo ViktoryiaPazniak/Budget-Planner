@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BudgetPlanner.DAL.Repositories
 {
-    public class TransactionRepository : IRepository<Transaction>
+    public class TransactionRepository : IRepository<TransactionEntity>
     {
         private ApplicationDbContext _context;
 
@@ -14,13 +14,13 @@ namespace BudgetPlanner.DAL.Repositories
             _context = context;
         }
 
-        public async Task Create(Transaction transaction)
+        public async Task Create(TransactionEntity transaction)
         {
             _context.Transactions.Add(transaction);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(Transaction transaction)
+        public async Task Update(TransactionEntity transaction)
         {
             var dbTransaction = await _context.Transactions.FindAsync(transaction.TransactionId);
 
@@ -49,12 +49,12 @@ namespace BudgetPlanner.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Transaction>> GetAll()
+        public async Task<IEnumerable<TransactionEntity>> GetAll()
         {
             return await _context.Transactions.ToListAsync();
         }
 
-        public async Task<Transaction> GetById(int id)
+        public async Task<TransactionEntity> GetById(int id)
         {
             var transaction = await _context.Transactions.FindAsync(id);
 

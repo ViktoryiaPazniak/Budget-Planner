@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BudgetPlanner.DAL.Repositories
 {
-    public class WalletRepository : IRepository<Wallet>
+    public class WalletRepository : IRepository<WalletEntity>
     {
         private ApplicationDbContext _context;
 
@@ -14,13 +14,13 @@ namespace BudgetPlanner.DAL.Repositories
             _context = context;
         }
 
-        public async Task Create(Wallet wallet)
+        public async Task Create(WalletEntity wallet)
         {
             _context.Wallets.Add(wallet);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(Wallet wallet)
+        public async Task Update(WalletEntity wallet)
         {
             var dbWallet = await _context.Wallets.FindAsync(wallet.WalletId);
 
@@ -49,12 +49,12 @@ namespace BudgetPlanner.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Wallet>> GetAll()
+        public async Task<IEnumerable<WalletEntity>> GetAll()
         {
             return await _context.Wallets.ToListAsync();
         }
 
-        public async Task<Wallet> GetById(int id)
+        public async Task<WalletEntity> GetById(int id)
         {
             var wallet = await _context.Wallets.FindAsync(id);
 

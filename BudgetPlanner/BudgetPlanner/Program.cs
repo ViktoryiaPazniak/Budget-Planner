@@ -1,3 +1,4 @@
+using BudgetPlanner.BLL.Maps;
 using BudgetPlanner.DAL.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
     opt.UseSqlServer(
         builder.Configuration.GetConnectionString("ApplicationDatabase")
     ));
+
+builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 
 var app = builder.Build();
 

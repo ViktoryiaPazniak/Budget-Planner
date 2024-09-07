@@ -7,11 +7,11 @@ namespace BudgetPlanner.DAL.Contexts
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Currency> Currencies { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Wallet> Wallets { get; set; }
+        public DbSet<CategoryEntity> Categories { get; set; }
+        public DbSet<CurrencyEntity> Currencies { get; set; }
+        public DbSet<TransactionEntity> Transactions { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<WalletEntity> Wallets { get; set; }
 
     }
 }

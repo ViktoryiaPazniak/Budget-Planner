@@ -1,4 +1,4 @@
-﻿namespace BudgetPlanner.DAL.Entities
+﻿namespace BudgetPlanner.BLL.Models
 {
     public class Currency
     {
